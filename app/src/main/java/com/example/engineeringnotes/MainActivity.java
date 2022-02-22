@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         FrameLayout frameLayout = findViewById(R.id.frame_layout);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout,new StartFragment())
+                .replace(R.id.frame_layout,new StartFragment(this,this))
                 .commit();
     }
 }
