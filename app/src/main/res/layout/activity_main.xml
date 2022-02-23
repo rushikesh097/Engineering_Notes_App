@@ -26,3 +26,4 @@
         </FrameLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
+    tools:context=".MainActivity"/>
