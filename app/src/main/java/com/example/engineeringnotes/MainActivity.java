@@ -23,7 +23,6 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
 
     @Override
@@ -41,20 +40,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        ActionBar Bar = getSupportActionBar();
-//        Bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         FrameLayout frameLayout = findViewById(R.id.frame_layout);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_layout,new StartFragment(this,this))
                 .commit();
 
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.NavigationView);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_close);
         actionBarDrawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -88,6 +87,5 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 }
