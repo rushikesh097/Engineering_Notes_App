@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.NavigationView);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_close);
