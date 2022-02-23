@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group android:checkableBehavior="single">
+    <item android:title="Select Year">
+        <menu>
+            <group>
+                <item android:title="First Year" android:id="@+id/nav_FE"></item>
+                <item android:title="Second Year" android:id="@+id/nav_SE"></item>
+                <item android:title="Third Year" android:id="@+id/nav_TE"></item>
+                <item android:title="Last Year" android:id="@+id/nav_BE"></item>
+            </group>
+        </menu>
+    </item>
+</group>
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_settings" android:title="Settings"></item>
+    </group>
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_review" android:title="Review"></item>
+    </group>
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_submit" android:title="Submit Notes"></item>
+    </group>
+</menu>
