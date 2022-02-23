@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                 }
-//
                 return true;
             }
         });
