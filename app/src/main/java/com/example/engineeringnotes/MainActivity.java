@@ -20,5 +20,7 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.frame_layout,new StartFragment(this,this))
                 .commit();
+
+        getSupportActionBar().hide();
     }
 }
