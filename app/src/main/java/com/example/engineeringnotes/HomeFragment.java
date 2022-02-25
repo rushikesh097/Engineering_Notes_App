@@ -1,6 +1,7 @@
 package com.example.engineeringnotes;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,22 +19,30 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class HomeFragment extends Fragment {
     //22-02-22
     //hbdc
-    ViewPager2 viewPager2;
-    TabLayout tabLayout;
-    VPFragmentAdapter vpFragmentAdapter;
+    private ViewPager2 viewPager2;
+    private TabLayout tabLayout;
+    private VPFragmentAdapter vpFragmentAdapter;
     private Context context;
-    FragmentActivity fragmentActivity;
+    private FragmentActivity fragmentActivity;
     private String[] tabNames = new String[]{"SEM I","SEM II"};
+    private String actionBarName;
 
-    public HomeFragment(Context context, FragmentActivity fragmentActivity){
+    public HomeFragment(Context context, FragmentActivity fragmentActivity, String actionBarName){
         this.context = context;
         this.fragmentActivity = fragmentActivity;
+        this.actionBarName = actionBarName;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        getActivity().setTitle(actionBarName);
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("isFirstTime",false);
+        editor.apply();
 
         viewPager2 = view.findViewById(R.id.viewPager2);
         tabLayout = view.findViewById(R.id.tabLayout);

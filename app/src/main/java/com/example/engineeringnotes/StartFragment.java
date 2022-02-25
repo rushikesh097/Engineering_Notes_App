@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class StartFragment extends Fragment {
 
     private Context context;
@@ -29,20 +31,46 @@ public class StartFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_start, container, false);
-        btn1 = view.findViewById(R.id.radioButton);
-        btn2 = view.findViewById(R.id.radioButton2);
-        btn3 = view.findViewById(R.id.radioButton3);
-        btn4 = view.findViewById(R.id.radioButton4);
+        btn1 = view.findViewById(R.id.fe_btn);
+        btn2 = view.findViewById(R.id.se_btn);
+        btn3 = view.findViewById(R.id.te_btn);
+        btn4 = view.findViewById(R.id.be_btn);
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Zal", Toast.LENGTH_SHORT).show();
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.frame_layout,new HomeFragment(context,fragmentActivity))
-                        .commit();
+                openHomeFragment((String) btn1.getText());
             }
         });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHomeFragment((String) btn2.getText());
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHomeFragment((String) btn3.getText());
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHomeFragment((String) btn4.getText());
+            }
+        });
+
         return view;
+    }
+
+    private void openHomeFragment(String actionBarName){
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout,new HomeFragment(context,fragmentActivity, actionBarName))
+                .commit();
     }
 }
