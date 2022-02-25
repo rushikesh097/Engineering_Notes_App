@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <group android:checkableBehavior="single">
-    <item android:title="Select Year">
+    <item android:title="@string/select_year">
         <menu>
             <group>
-                <item android:title="First Year" android:id="@+id/nav_FE"></item>
-                <item android:title="Second Year" android:id="@+id/nav_SE"></item>
-                <item android:title="Third Year" android:id="@+id/nav_TE"></item>
-                <item android:title="Last Year" android:id="@+id/nav_BE"></item>
+                <item
+                    android:title="@string/first_year"
+                    android:id="@+id/nav_FE" />
+                <item
+                    android:title="@string/second_year"
+                    android:id="@+id/nav_SE" />
+                <item
+                    android:title="@string/third_year"
+                    android:id="@+id/nav_TE" />
+                <item
+                    android:title="@string/final_year"
+                    android:id="@+id/nav_BE" />
             </group>
         </menu>
     </item>
 </group>
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_settings" android:title="Settings"></item>
+        <item
+            android:id="@+id/nav_settings"
+            android:title="@string/settings" />
     </group>
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_review" android:title="Review"></item>
+        <item
+            android:id="@+id/nav_review"
+            android:title="@string/review" />
     </group>
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_submit" android:title="Submit Notes"></item>
+        <item
+            android:id="@+id/nav_submit"
+            android:title="@string/submit_notes" />
     </group>
 </menu>

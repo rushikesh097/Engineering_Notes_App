@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:openDrawer="start"
     android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frame_layout">
+    </FrameLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -15,12 +22,6 @@
         app:menu="@menu/main_menu"
         android:fitsSystemWindows="true"
         android:layout_gravity="start">
-
     </com.google.android.material.navigation.NavigationView>
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/frame_layout">
-        </FrameLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
