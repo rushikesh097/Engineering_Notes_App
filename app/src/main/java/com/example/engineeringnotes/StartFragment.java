@@ -9,11 +9,9 @@ import androidx.fragment.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
-import java.util.Objects;
+
 
 public class StartFragment extends Fragment {
 
@@ -36,33 +34,13 @@ public class StartFragment extends Fragment {
         btn3 = view.findViewById(R.id.te_btn);
         btn4 = view.findViewById(R.id.be_btn);
 
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openHomeFragment((String) btn1.getText());
-            }
-        });
+        btn1.setOnClickListener(view1 -> openHomeFragment((String) btn1.getText()));
 
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openHomeFragment((String) btn2.getText());
-            }
-        });
+        btn2.setOnClickListener(view12 -> openHomeFragment((String) btn2.getText()));
 
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openHomeFragment((String) btn3.getText());
-            }
-        });
+        btn3.setOnClickListener(view13 -> openHomeFragment((String) btn3.getText()));
 
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openHomeFragment((String) btn4.getText());
-            }
-        });
+        btn4.setOnClickListener(view14 -> openHomeFragment((String) btn4.getText()));
 
         return view;
     }

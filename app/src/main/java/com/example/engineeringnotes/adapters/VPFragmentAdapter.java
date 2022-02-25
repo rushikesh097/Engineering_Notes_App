@@ -27,7 +27,7 @@ public class VPFragmentAdapter extends FragmentStateAdapter {
             case 0:
                 return new SemOneFragment(context);
             case 1:
-                return new SemTwoFragment();
+                return new SemTwoFragment(context);
         }
         return new SemOneFragment(context);
     }

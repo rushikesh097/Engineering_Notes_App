@@ -16,6 +16,8 @@ import com.example.engineeringnotes.adapters.VPFragmentAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.Objects;
+
 public class HomeFragment extends Fragment {
     //22-02-22
     //hbdc
@@ -24,7 +26,7 @@ public class HomeFragment extends Fragment {
     private VPFragmentAdapter vpFragmentAdapter;
     private Context context;
     private FragmentActivity fragmentActivity;
-    private String[] tabNames = new String[]{"SEM I","SEM II"};
+    private final String[] tabNames = new String[]{"SEM I","SEM II"};
     private String actionBarName;
 
     public HomeFragment(Context context, FragmentActivity fragmentActivity, String actionBarName){
@@ -37,7 +39,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        getActivity().setTitle(actionBarName);
+        requireActivity().setTitle(actionBarName);
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

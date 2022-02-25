@@ -1,5 +1,6 @@
 package com.example.engineeringnotes.homefragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,12 @@ import android.view.ViewGroup;
 import com.example.engineeringnotes.R;
 
 public class SemTwoFragment extends Fragment {
+
+    private Context context;
+
+    public SemTwoFragment(Context context) {
+        this.context = context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
