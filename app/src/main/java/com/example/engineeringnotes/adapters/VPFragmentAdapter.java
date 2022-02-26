@@ -13,7 +13,7 @@ import com.example.engineeringnotes.homefragments.SemTwoFragment;
 
 public class VPFragmentAdapter extends FragmentStateAdapter {
 
-    private String[] tabNames = new String[]{"SEM I","SEM II"};
+    private final String[] tabNames = new String[]{"SEM I","SEM II"};
 
     private Context context;
     public VPFragmentAdapter(@NonNull FragmentActivity fragmentActivity) {

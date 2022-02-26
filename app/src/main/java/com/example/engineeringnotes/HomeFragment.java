@@ -16,7 +16,6 @@ import com.example.engineeringnotes.adapters.VPFragmentAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     //22-02-22
@@ -44,6 +43,7 @@ public class HomeFragment extends Fragment {
         SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("isFirstTime",false);
+        editor.putString("year",actionBarName);
         editor.apply();
 
         viewPager2 = view.findViewById(R.id.viewPager2);
