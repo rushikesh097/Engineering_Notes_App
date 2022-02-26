@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
 
         boolean flag = sharedPreferences.getBoolean("isFirstTime",true);
+        String year = sharedPreferences.getString("year","First Year");
 
         if(flag){
             getSupportFragmentManager()
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.frame_layout,new HomeFragment(this,this,"First Year"))
+                    .replace(R.id.frame_layout,new HomeFragment(this,this,year))
                     .commit();
         }
 
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openFragment(String actionBarName){
+
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_layout,new HomeFragment(MainActivity.this,MainActivity.this,actionBarName))
