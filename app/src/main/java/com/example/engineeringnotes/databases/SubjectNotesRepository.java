@@ -9,23 +9,22 @@ import java.util.List;
 public class SubjectNotesRepository {
 
     private SubjectNotesDao subjectNotesDao;
-    private LiveData<List<SubjectNotes>> allSubjectNotes;
 
     public SubjectNotesRepository(Application application){
         SubjectNotesDatabase subjectNotesDatabase = SubjectNotesDatabase.getInstance(application);
         subjectNotesDao = subjectNotesDatabase.subjectNotesDao();
-        allSubjectNotes = subjectNotesDao.getAllSubjectNotes();
     }
 
-    public LiveData<List<SubjectNotes>> getAllSubjectNotes(){
-        return allSubjectNotes;
-    }
 
-    public LiveData<List<String>> getSubjectsFromSemester(int semester){
+    public List<String> getSubjectsFromSemester(int semester){
         return subjectNotesDao.getSubjectsFromSemester(semester);
     }
 
-    public LiveData<List<SubjectNotes>> getChaptersFromSubject(String subject){
+    public List<String> getChaptersFromSubject(String subject){
         return subjectNotesDao.getChaptersFromSubject(subject);
+    }
+
+    public List<String> getLinkFromChapter(String chapter){
+        return subjectNotesDao.getLinkFromChapter(chapter);
     }
 }
