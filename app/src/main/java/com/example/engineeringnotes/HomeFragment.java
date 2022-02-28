@@ -48,8 +48,7 @@ public class HomeFragment extends Fragment {
 
         viewPager2 = view.findViewById(R.id.viewPager2);
         tabLayout = view.findViewById(R.id.tabLayout);
-        vpFragmentAdapter = new VPFragmentAdapter(fragmentActivity);
-        vpFragmentAdapter.setContext(context);
+        vpFragmentAdapter = new VPFragmentAdapter(fragmentActivity,context,actionBarName);
         viewPager2.setAdapter(vpFragmentAdapter);
 
         new TabLayoutMediator(tabLayout,viewPager2,(((tab, position) -> tab.setText(tabNames[position]))))
