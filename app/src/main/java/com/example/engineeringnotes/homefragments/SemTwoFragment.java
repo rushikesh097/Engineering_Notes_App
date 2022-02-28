@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +14,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.engineeringnotes.R;
+import com.example.engineeringnotes.adapters.RecyclerViewAdapter;
 import com.example.engineeringnotes.databases.SubjectNotesViewModel;
 
 import java.util.List;
 
 public class SemTwoFragment extends Fragment {
 
+    private RecyclerView recyclerView;
     private Context context;
     private String year;
-    private List<String> sub;
+    private List<String> subjects;
     public SemTwoFragment(Context context,String year) {
         this.context = context;
         this.year = year;
@@ -30,16 +34,14 @@ public class SemTwoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_sem_two, container, false);
 
-        ListView listView = view.findViewById(R.id.list_view2);
+        SubjectNotesViewModel notesViewModel = new SubjectNotesViewModel(requireActivity().getApplication());
+        subjects = getSubjects(notesViewModel);
 
-        sub = getSubjects(new SubjectNotesViewModel(requireActivity().getApplication()));
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(context, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sub);
-        listView.setAdapter(arrayAdapter);
-
+        recyclerView = view.findViewById(R.id.recyclerview2);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(new RecyclerViewAdapter(subjects,context));
         return view;
     }
 
