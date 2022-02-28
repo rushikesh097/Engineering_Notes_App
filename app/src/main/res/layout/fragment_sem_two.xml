@@ -5,17 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".homefragments.SemOneFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Sem Two"
-        android:textSize="25sp" />
-
-    <ListView
-        android:id="@+id/list_view2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        tools:listitem="@layout/recycler_item"/>
 </FrameLayout>

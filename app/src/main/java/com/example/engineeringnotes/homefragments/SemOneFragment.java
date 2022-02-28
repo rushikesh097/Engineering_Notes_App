@@ -4,26 +4,30 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.AdapterView;
+
 
 import com.example.engineeringnotes.R;
+import com.example.engineeringnotes.adapters.RecyclerViewAdapter;
 import com.example.engineeringnotes.databases.SubjectNotesViewModel;
 
 import java.util.List;
 
 public class SemOneFragment extends Fragment {
 
+    private RecyclerView recyclerView;
+
+
     private Context context;
     private String year;
-    private List<String> sub;
+    private List<String> subjects;
 
     public SemOneFragment(Context context, String year) {
         this.context = context;
@@ -36,15 +40,12 @@ public class SemOneFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_sem_one, container, false);
 
-        TextView textView = view.findViewById(R.id.demo);
-        ListView listView = view.findViewById(R.id.list_view);
-
         SubjectNotesViewModel notesViewModel = new SubjectNotesViewModel(requireActivity().getApplication());
-        sub = getSubjects(notesViewModel);
+        subjects = getSubjects(notesViewModel);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(context, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,sub);
-        listView.setAdapter(arrayAdapter);
-
+        recyclerView = view.findViewById(R.id.recyclerview1);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(new RecyclerViewAdapter(subjects,context));
         return view;
     }
 
@@ -59,5 +60,4 @@ public class SemOneFragment extends Fragment {
         }
         return subjectNotesViewModel.getSubjects(1);
     }
-
 }
