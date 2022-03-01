@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.engineeringnotes.adapters.ChaptersRVAdapter;
 import com.example.engineeringnotes.databases.SubjectNotesViewModel;
@@ -52,8 +53,10 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
     private void openWebPage(String url) {
         Uri webpage = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
-        if (intent.resolveActivity(getPackageManager()) != null) {
+        try{
             startActivity(intent);
+        }catch (Exception e){
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 }
