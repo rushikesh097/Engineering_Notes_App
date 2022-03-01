@@ -1,5 +1,6 @@
 package com.example.engineeringnotes.homefragments;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -21,11 +22,10 @@ import java.util.List;
 public class SemOneFragment extends Fragment {
 
     private RecyclerView recyclerView;
-
-
     private Context context;
     private String year;
     private List<String> subjects;
+    private int semester;
 
     public SemOneFragment(Context context, String year) {
         this.context = context;
@@ -38,25 +38,32 @@ public class SemOneFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_sem_one, container, false);
 
-        SubjectNotesViewModel notesViewModel = new SubjectNotesViewModel(requireActivity().getApplication());
+        Application application = requireActivity().getApplication();
+
+        SubjectNotesViewModel notesViewModel = new SubjectNotesViewModel(application);
         subjects = getSubjects(notesViewModel);
 
         recyclerView = view.findViewById(R.id.subjects_recyclerview1);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(new SubjectsRVAdapter(subjects,context));
+        recyclerView.setAdapter(new SubjectsRVAdapter(subjects,context,application,semester));
         recyclerView.setHasFixedSize(true);
+
         return view;
     }
 
     private List<String> getSubjects(SubjectNotesViewModel subjectNotesViewModel){
         switch (year){
             case "First Year":
+                semester = 1;
                 return subjectNotesViewModel.getSubjects(1);
             case "Second Year":
+                semester = 3;
                 return subjectNotesViewModel.getSubjects(3);
             case "Third Year":
+                semester = 5;
                 return subjectNotesViewModel.getSubjects(5);
         }
+        semester = 1;
         return subjectNotesViewModel.getSubjects(1);
     }
 }
