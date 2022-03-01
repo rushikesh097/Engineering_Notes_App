@@ -16,26 +16,26 @@ import com.example.engineeringnotes.R;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.SubjectViewHolder> {
+public class SubjectsRVAdapter extends RecyclerView.Adapter<SubjectsRVAdapter.SubjectViewHolder> {
 
     private List<String >subjectList;
     private Context context;
 
 
-    public RecyclerViewAdapter(List<String> subjectList, Context context) {
+    public SubjectsRVAdapter(List<String> subjectList, Context context) {
         this.subjectList = subjectList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public RecyclerViewAdapter.SubjectViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SubjectsRVAdapter.SubjectViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item,parent,false);
         return new SubjectViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.SubjectViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SubjectsRVAdapter.SubjectViewHolder holder, int position) {
         String subject = subjectList.get(position);
         holder.subjectName.setText(subject);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public SubjectViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            subjectName = itemView.findViewById(R.id.subject_name);
+            subjectName = itemView.findViewById(R.id.name);
             cardView = itemView.findViewById(R.id.cardview);
         }
     }
