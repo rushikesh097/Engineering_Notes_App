@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <group android:checkableBehavior="single">
-    <item android:title="@string/select_year">
-        <menu>
-            <group>
-                <item
-                    android:title="@string/first_year"
-                    android:id="@+id/nav_FE" />
-                <item
-                    android:title="@string/second_year"
-                    android:id="@+id/nav_SE" />
-                <item
-                    android:title="@string/third_year"
-                    android:id="@+id/nav_TE" />
-                <item
-                    android:title="@string/final_year"
-                    android:id="@+id/nav_BE" />
-            </group>
-        </menu>
-    </item>
+    <item android:title="@string/select_year"
+        android:checkable="false"
+        android:id="@+id/main_title"/>
 </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:title="@string/first_year"
+            android:id="@+id/nav_FE" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:title="@string/second_year"
+            android:id="@+id/nav_SE" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:title="@string/third_year"
+            android:id="@+id/nav_TE" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:title="@string/final_year"
+            android:id="@+id/nav_BE" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:title=" "
+            android:layout_height="wrap_content"/>
+    </group>
 
     <group android:checkableBehavior="single">
         <item

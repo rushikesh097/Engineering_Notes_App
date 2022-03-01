@@ -7,15 +7,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 
 import com.example.engineeringnotes.R;
-import com.example.engineeringnotes.adapters.RecyclerViewAdapter;
+import com.example.engineeringnotes.adapters.SubjectsRVAdapter;
 import com.example.engineeringnotes.databases.SubjectNotesViewModel;
 
 import java.util.List;
@@ -43,9 +41,10 @@ public class SemOneFragment extends Fragment {
         SubjectNotesViewModel notesViewModel = new SubjectNotesViewModel(requireActivity().getApplication());
         subjects = getSubjects(notesViewModel);
 
-        recyclerView = view.findViewById(R.id.recyclerview1);
+        recyclerView = view.findViewById(R.id.subjects_recyclerview1);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(new RecyclerViewAdapter(subjects,context));
+        recyclerView.setAdapter(new SubjectsRVAdapter(subjects,context));
+        recyclerView.setHasFixedSize(true);
         return view;
     }
 

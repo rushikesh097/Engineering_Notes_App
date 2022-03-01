@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.NavigationView);
+
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout,new HomeFragment(MainActivity.this,MainActivity.this,actionBarName))
+                .replace(R.id.frame_layout,new HomeFragment(this,this,actionBarName))
                 .commit();
     }
 
