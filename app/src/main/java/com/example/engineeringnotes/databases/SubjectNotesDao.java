@@ -17,4 +17,7 @@ public interface SubjectNotesDao {
     @Query("SELECT link FROM notes_table WHERE chapter_name = :chapter")
     List<String> getLinkFromChapter(String chapter);
 
+    @Query("SELECT link FROM notes_table WHERE semester_no = :semester AND subject_name = :subject")
+    List<String> getLinkFromSemester(int semester,String subject);
+
 }

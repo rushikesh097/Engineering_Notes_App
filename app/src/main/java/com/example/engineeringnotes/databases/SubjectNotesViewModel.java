@@ -29,4 +29,8 @@ public class SubjectNotesViewModel extends AndroidViewModel {
     public List<String> getLinkFromChapter(String chapter){
         return repository.getLinkFromChapter(chapter);
     }
+
+    public List<String> getLinkFromSemester(int semester,String subject){
+        return  repository.getLinkFromSemester(semester,subject);
+    }
 }

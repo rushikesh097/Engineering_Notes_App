@@ -15,6 +15,7 @@ import com.example.engineeringnotes.adapters.ChaptersRVAdapter;
 import com.example.engineeringnotes.databases.SubjectNotesViewModel;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAdapter.OnChapterClickListener {
 
@@ -28,7 +29,7 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
         setContentView(R.layout.activity_chapters);
         Intent intent = getIntent();
         String subject = intent.getStringExtra("subject_name");
-        getSupportActionBar().setTitle(subject);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(subject);
 
         recyclerView = findViewById(R.id.chapters_recyclerview);
 
@@ -43,7 +44,6 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
 
     @Override
     public void onChapterClick(String chapter) {
-        Log.d("Web","W Click");
         String link = subjectNotesViewModel.getLinkFromChapter(chapter).get(0);
         openWebPage(link);
     }

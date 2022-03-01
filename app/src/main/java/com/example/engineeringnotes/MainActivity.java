@@ -3,7 +3,6 @@ package com.example.engineeringnotes;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -96,19 +95,18 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.nav_settings:
-                Log.i("MENU_DRAWER_TAG","settings clicked");
-                Toast.makeText(MainActivity.this, "Clicked on FE", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Change Setting", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
 
             case R.id.nav_review:
-                Log.i("MENU_DRAWER_TAG","review clicked");
-                Toast.makeText(MainActivity.this, "Clicked on FE", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Review here !", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
 
             case R.id.nav_submit:
                 Toast.makeText(MainActivity.this, "Submit here !", Toast.LENGTH_SHORT).show();
+                drawerLayout.closeDrawer(GravityCompat.START);
                 break;
         }
     }

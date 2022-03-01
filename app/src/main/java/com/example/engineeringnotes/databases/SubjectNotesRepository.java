@@ -27,4 +27,8 @@ public class SubjectNotesRepository {
     public List<String> getLinkFromChapter(String chapter){
         return subjectNotesDao.getLinkFromChapter(chapter);
     }
+
+    public List<String> getLinkFromSemester(int semester,String subject){
+        return  subjectNotesDao.getLinkFromSemester(semester,subject);
+    }
 }
