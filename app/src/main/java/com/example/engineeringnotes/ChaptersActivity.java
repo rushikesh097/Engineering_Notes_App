@@ -56,7 +56,7 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
         try{
             startActivity(intent);
         }catch (Exception e){
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
         }
     }
 }
