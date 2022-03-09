@@ -38,7 +38,7 @@ public class SubjectsRVAdapter extends RecyclerView.Adapter<SubjectsRVAdapter.Su
     @NonNull
     @Override
     public SubjectsRVAdapter.SubjectViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item,parent,false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_subjects,parent,false);
         return new SubjectViewHolder(itemView);
     }
 

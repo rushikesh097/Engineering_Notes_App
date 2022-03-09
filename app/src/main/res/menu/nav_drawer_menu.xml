@@ -37,6 +37,11 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/saved_notes"
+            android:title="@string/saved_notes"/>
+    </group>
+    <group android:checkableBehavior="single">
+        <item
             android:id="@+id/nav_settings"
             android:title="@string/settings" />
     </group>

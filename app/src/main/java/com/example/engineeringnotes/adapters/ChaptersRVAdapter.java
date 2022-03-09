@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -30,7 +32,7 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
     @Override
     public ChaptersRVAdapter.ChapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycler_item,parent,false);
+                .inflate(R.layout.recycler_item_chapters,parent,false);
         return new ChapterViewHolder(view);
     }
 
@@ -45,6 +47,14 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
                 chapterClickListener.onChapterClick(chapter);
             }
         });
+
+        holder.bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Saved Successfully !", Toast.LENGTH_SHORT).show();
+                chapterClickListener.onBookmarkClick(chapter);
+            }
+        });
     }
 
     @Override
@@ -55,15 +65,18 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
     public class ChapterViewHolder extends RecyclerView.ViewHolder{
         TextView chapterName;
         CardView cardView;
+        ImageView bookmark;
         public ChapterViewHolder(@NonNull View itemView) {
             super(itemView);
             chapterName = itemView.findViewById(R.id.name);
             cardView = itemView.findViewById(R.id.cardview);
+            bookmark = itemView.findViewById(R.id.bookmark);
         }
     }
 
     public interface OnChapterClickListener {
         void onChapterClick(String chapter);
+        void onBookmarkClick(String chapter);
     }
 }
 

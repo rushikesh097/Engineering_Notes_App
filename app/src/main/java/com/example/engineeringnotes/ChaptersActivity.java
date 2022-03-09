@@ -8,10 +8,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.engineeringnotes.adapters.ChaptersRVAdapter;
+import com.example.engineeringnotes.databases.savednotes.SavedNotes;
 import com.example.engineeringnotes.databases.SubjectNotesViewModel;
 
 import java.util.List;
@@ -22,13 +22,15 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
     private List<String> chapterNames;
     private RecyclerView recyclerView;
     private SubjectNotesViewModel subjectNotesViewModel;
+    private String link;
+    private String subject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapters);
         Intent intent = getIntent();
-        String subject = intent.getStringExtra("subject_name");
+        subject = intent.getStringExtra("subject_name");
         Objects.requireNonNull(getSupportActionBar()).setTitle(subject);
 
         recyclerView = findViewById(R.id.chapters_recyclerview);
@@ -44,8 +46,15 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
 
     @Override
     public void onChapterClick(String chapter) {
-        String link = subjectNotesViewModel.getLinkFromChapter(chapter).get(0);
+        link = subjectNotesViewModel.getLinkFromChapter(chapter).get(0);
         openWebPage(link);
+    }
+
+    @Override
+    public void onBookmarkClick(String chapter) {
+        link = subjectNotesViewModel.getLinkFromChapter(chapter).get(0);
+        SavedNotes savedNotes = chapter.equals("Question Papers")? new SavedNotes(chapter+" : "+subject,link): new SavedNotes(chapter,link);
+        subjectNotesViewModel.insert(savedNotes);
     }
 
 

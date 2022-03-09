@@ -11,6 +11,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -71,26 +72,32 @@ public class MainActivity extends AppCompatActivity {
     private void navigationDrawer(MenuItem item){
         switch (item.getItemId()){
             case R.id.nav_FE:
-                openFragment("First Year");
+                openFragment(new HomeFragment(this,this,"First Year"));
                 Toast.makeText(MainActivity.this, "First Year Selected !", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
 
             case R.id.nav_SE:
-                openFragment("Second Year");
+                openFragment(new HomeFragment(this,this,"Second Year"));
                 Toast.makeText(MainActivity.this, "Second Year Selected !", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
 
             case R.id.nav_TE:
-                openFragment("Third Year");
+                openFragment(new HomeFragment(this,this,"Third Year"));
                 Toast.makeText(MainActivity.this, "Final Year Selected !", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
 
             case R.id.nav_BE:
-                openFragment("Final Year");
+                openFragment(new HomeFragment(this,this,"Final Year"));
                 Toast.makeText(MainActivity.this, "Final Year Selected !", Toast.LENGTH_SHORT).show();
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+
+            case R.id.saved_notes:
+                openFragment(new SavedNotesFragment(this,"Saved Notes"));
+                Toast.makeText(MainActivity.this, "Saved Notes", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
 
@@ -111,11 +118,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void openFragment(String actionBarName){
-
+    private void openFragment(Fragment fragment){
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout,new HomeFragment(this,this,actionBarName))
+                .replace(R.id.frame_layout,fragment)
                 .commit();
     }
 
