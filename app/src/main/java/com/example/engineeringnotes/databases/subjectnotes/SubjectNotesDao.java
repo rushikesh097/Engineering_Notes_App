@@ -1,7 +1,11 @@
-package com.example.engineeringnotes.databases;
+package com.example.engineeringnotes.databases.subjectnotes;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.engineeringnotes.databases.savednotes.SavedNotes;
 
 import java.util.List;
 

@@ -3,11 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homefragments.SemOneFragment">
+    tools:context=".SavedNotesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/subjects_recyclerview2"
+        android:id="@+id/saved_notes_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/recycler_item_subjects"/>
+        android:layout_height="match_parent" />
 </FrameLayout>

@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +28,7 @@ public class SemOneFragment extends Fragment {
     private String year;
     private List<String> subjects;
     private int semester;
+    private SubjectNotesViewModel viewModel;
 
     public SemOneFragment(Context context, String year) {
         this.context = context;
@@ -35,35 +38,37 @@ public class SemOneFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_sem_one, container, false);
+    }
 
-        View view = inflater.inflate(R.layout.fragment_sem_one, container, false);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         Application application = requireActivity().getApplication();
 
-        SubjectNotesViewModel notesViewModel = new SubjectNotesViewModel(application);
-        subjects = getSubjects(notesViewModel);
+        viewModel = new SubjectNotesViewModel(application);
+        subjects = getSubjects();
 
         recyclerView = view.findViewById(R.id.subjects_recyclerview1);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(new SubjectsRVAdapter(subjects,context,application,semester));
         recyclerView.setHasFixedSize(true);
-
-        return view;
     }
 
-    private List<String> getSubjects(SubjectNotesViewModel subjectNotesViewModel){
+    private List<String> getSubjects(){
         switch (year){
             case "First Year":
                 semester = 1;
-                return subjectNotesViewModel.getSubjects(1);
+                return viewModel.getSubjects(1);
             case "Second Year":
                 semester = 3;
-                return subjectNotesViewModel.getSubjects(3);
+                return viewModel.getSubjects(3);
             case "Third Year":
                 semester = 5;
-                return subjectNotesViewModel.getSubjects(5);
+                return viewModel.getSubjects(5);
         }
         semester = 1;
-        return subjectNotesViewModel.getSubjects(1);
+        return viewModel.getSubjects(1);
     }
 }

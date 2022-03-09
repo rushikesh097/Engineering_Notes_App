@@ -1,14 +1,12 @@
-package com.example.engineeringnotes.databases;
+package com.example.engineeringnotes.databases.subjectnotes;
 
 import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.sqlite.db.SupportSQLiteDatabase;
-import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-import com.example.engineeringnotes.StartFragment;
+import com.example.engineeringnotes.databases.savednotes.SavedNotes;
 
 @Database(entities = {SubjectNotes.class}, version = 2)
 public abstract class SubjectNotesDatabase extends RoomDatabase {
@@ -19,12 +17,12 @@ public abstract class SubjectNotesDatabase extends RoomDatabase {
 
     public static synchronized SubjectNotesDatabase getInstance(Context context){
         if(INSTANCE == null){
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), SubjectNotesDatabase.class,"NotesDB1")
+            INSTANCE = Room
+                    .databaseBuilder(context.getApplicationContext(), SubjectNotesDatabase.class,"NotesDB1")
                     .createFromAsset("database/NotesDB.db")
                     .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build();
-            SupportSQLiteDatabase supportSQLiteOpenHelper = INSTANCE.getOpenHelper().getWritableDatabase();
         }
         return INSTANCE;
     }
