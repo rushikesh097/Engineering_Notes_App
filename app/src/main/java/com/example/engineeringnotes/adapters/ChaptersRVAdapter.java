@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -48,11 +47,10 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
             }
         });
 
-        holder.bookmark.setOnClickListener(new View.OnClickListener() {
+        holder.more1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "Saved Successfully !", Toast.LENGTH_SHORT).show();
-                chapterClickListener.onBookmarkClick(chapter);
+            public void onClick(View view){
+                chapterClickListener.onPopupMenuClick(chapter, holder.more1);
             }
         });
     }
@@ -65,18 +63,18 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
     public class ChapterViewHolder extends RecyclerView.ViewHolder{
         TextView chapterName;
         CardView cardView;
-        ImageView bookmark;
+        ImageView more1;
         public ChapterViewHolder(@NonNull View itemView) {
             super(itemView);
             chapterName = itemView.findViewById(R.id.name);
             cardView = itemView.findViewById(R.id.cardview);
-            bookmark = itemView.findViewById(R.id.bookmark);
+            more1 = itemView.findViewById(R.id.more1);
         }
     }
 
     public interface OnChapterClickListener {
         void onChapterClick(String chapter);
-        void onBookmarkClick(String chapter);
+        void onPopupMenuClick(String chapter, ImageView view);
     }
 }
 
