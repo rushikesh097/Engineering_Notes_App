@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.engineeringnotes.R;
 
-import java.util.List;
-
 public class SavedNotesRVAdapter extends ListAdapter<String,SavedNotesRVAdapter.SavedNotesHolder> {
 
     private Context context;
@@ -58,10 +56,10 @@ public class SavedNotesRVAdapter extends ListAdapter<String,SavedNotesRVAdapter.
             }
         });
 
-        holder.delete.setOnClickListener(new View.OnClickListener() {
+        holder.more2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickListener.onItemIconClick(chapter);
+                onItemClickListener.onItemIconClick(chapter,holder.more2);
             }
         });
     }
@@ -73,17 +71,17 @@ public class SavedNotesRVAdapter extends ListAdapter<String,SavedNotesRVAdapter.
     public class SavedNotesHolder extends RecyclerView.ViewHolder{
         TextView chapterName;
         CardView cardView;
-        ImageView delete;
+        ImageView more2;
         public SavedNotesHolder(@NonNull View itemView) {
             super(itemView);
             chapterName = itemView.findViewById(R.id.name);
             cardView = itemView.findViewById(R.id.cardview);
-            delete = itemView.findViewById(R.id.delete);
+            more2 = itemView.findViewById(R.id.more2);
         }
     }
 
     public interface OnItemClickListener{
         void onItemClick(String chapter);
-        void onItemIconClick(String chapter);
+        void onItemIconClick(String chapter,ImageView view);
     }
 }

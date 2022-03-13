@@ -15,17 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.engineeringnotes.adapters.ChaptersRVAdapter;
 import com.example.engineeringnotes.adapters.SavedNotesRVAdapter;
 import com.example.engineeringnotes.databases.SubjectNotesViewModel;
-
-import java.security.acl.Owner;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.OnItemClickListener {
 
@@ -72,7 +70,7 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                     String chapter = adapter.getChapterNameAt(viewHolder.getAbsoluteAdapterPosition());
-                    onItemIconClick(chapter);
+                    deleteSavedNote(chapter);
                 }
             });
     }
@@ -84,9 +82,34 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
     }
 
     @Override
-    public void onItemIconClick(String chapter) {
-        viewModel.delete(chapter);
-        Toast.makeText(context, "Deleted Successfully !", Toast.LENGTH_SHORT).show();
+    public void onItemIconClick(String chapter, ImageView view) {
+        PopupMenu popup = new PopupMenu(context,view);
+        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+        popup.getMenu().getItem(1).setVisible(false);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+
+                switch (menuItem.getItemId()){
+                    case R.id.open:{
+                        onItemClick(chapter);
+                        break;
+                    }
+
+                    case R.id.more2:{
+                        deleteSavedNote(chapter);
+                        break;
+                    }
+
+                    case R.id.share:{
+                        shareUrlLink(chapter);
+                        break;
+                    }
+                }
+                return true;
+            }
+        });
+        popup.show();
     }
 
     @SuppressLint("QueryPermissionsNeeded")
@@ -98,5 +121,22 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
         }catch (Exception e){
             Toast.makeText(context, "Error !", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void deleteSavedNote(String chapter)
+    {
+        viewModel.delete(chapter);
+        Toast.makeText(context, "Deleted Successfully !", Toast.LENGTH_SHORT).show();
+    }
+
+    private void shareUrlLink(String link)
+    {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, link);
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
     }
 }
