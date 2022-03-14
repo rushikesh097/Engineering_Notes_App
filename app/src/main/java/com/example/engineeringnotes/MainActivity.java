@@ -1,7 +1,9 @@
 package com.example.engineeringnotes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -106,14 +108,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Change Setting", Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
-
-            case R.id.nav_review:
-                Toast.makeText(MainActivity.this, "Review here !", Toast.LENGTH_SHORT).show();
-                drawerLayout.closeDrawer(GravityCompat.START);
-                break;
-
             case R.id.nav_submit:
-                Toast.makeText(MainActivity.this, "Submit here !", Toast.LENGTH_SHORT).show();
+                openWebPage("https://forms.gle/pVgZGkQonrrVdVzv8");
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
         }
@@ -126,4 +122,13 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
+    private void openWebPage(String url) {
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        try{
+            startActivity(intent);
+        }catch (Exception e){
+            Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
