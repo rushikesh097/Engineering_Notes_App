@@ -80,7 +80,7 @@ Give credit here.
 Created by 
 - [@rushikesh](https://github.com/rushikesh097/)
 - [@ashish](https://github.com/ashish-birajdar007) 
-feel free to contact us!
+ feel free to contact us!
 
 
 <!-- Optional -->
