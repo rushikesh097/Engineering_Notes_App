@@ -44,7 +44,7 @@ List the ready features here:
 
 ## Setup
 - Add this in build.gradel
-`def lifecycle_version = "2.5.0-alpha02"
+`def lifecycle_version = "2.5.0-alpha02"`
     //lifecycle components
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     // LiveData
