@@ -1,7 +1,6 @@
 # Engineering_Notes_App
 
-# Project Name
-> Outline a brief description of your project.
+> This is an Android App, which helps Engineering Students for Notes of various subjects.
 > Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Table of Contents
