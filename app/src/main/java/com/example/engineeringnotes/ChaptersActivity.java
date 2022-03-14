@@ -68,14 +68,12 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
                         onChapterClick(chapter);
                         break;
                     }
-
                     case R.id.save:{
                         Toast.makeText(ChaptersActivity.this, "Saved Successfully", Toast.LENGTH_SHORT).show();
                         SavedNotes savedNotes = chapter.equals("Question Papers")? new SavedNotes(chapter+" : "+subject,link): new SavedNotes(chapter,link);
                         subjectNotesViewModel.insert(savedNotes);
                         break;
                     }
-
                     case R.id.share:{
                         shareUrlLink(link);
                         break;
@@ -102,10 +100,10 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
     {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, link);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Engineering Notes App\n"+link);
         sendIntent.setType("text/plain");
 
-        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        Intent shareIntent = Intent.createChooser(sendIntent, "Share Notes");
         startActivity(shareIntent);
     }
 }

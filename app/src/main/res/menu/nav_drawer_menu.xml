@@ -29,7 +29,7 @@
             android:id="@+id/nav_BE" />
     </group>
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="none">
         <item
             android:title=" "
             android:layout_height="wrap_content"/>

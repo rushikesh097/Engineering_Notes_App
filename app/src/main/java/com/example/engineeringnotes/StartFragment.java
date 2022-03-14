@@ -20,6 +20,9 @@ public class StartFragment extends Fragment {
     private Context context;
     private FragmentActivity fragmentActivity;
 
+    public StartFragment() {
+    }
+
     public StartFragment(Context context, FragmentActivity fragmentActivity) {
         this.context = context;
         this.fragmentActivity = fragmentActivity;

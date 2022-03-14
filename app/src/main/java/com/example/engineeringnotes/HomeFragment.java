@@ -30,12 +30,14 @@ public class HomeFragment extends Fragment {
     private final String[] tabNames = new String[]{"SEM I","SEM II"};
     private String actionBarName;
 
+    public HomeFragment() {
+    }
+
     public HomeFragment(Context context, FragmentActivity fragmentActivity, String actionBarName){
         this.context = context;
         this.fragmentActivity = fragmentActivity;
         this.actionBarName = actionBarName;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
