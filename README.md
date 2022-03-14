@@ -79,7 +79,9 @@ Give credit here.
 
 
 ## Contact
-Created by [@rushikesh](https://github.com/rushikesh097/) - feel free to contact me!
+Created by 
+- [@rushikesh](https://github.com/rushikesh097/)
+- [@ashish](https://github.com/ashish-birajdar007) - feel free to contact me!
 
 
 <!-- Optional -->
