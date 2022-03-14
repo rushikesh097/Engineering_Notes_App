@@ -47,11 +47,6 @@
     </group>
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_review"
-            android:title="@string/review" />
-    </group>
-    <group android:checkableBehavior="single">
-        <item
             android:id="@+id/nav_submit"
             android:title="@string/submit_notes" />
     </group>
