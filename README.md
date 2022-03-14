@@ -27,6 +27,7 @@
 
 ## Technologies Used
 - Java (JDK-12)
+- Room database (2.4.1)
 - Android Studio (2021.1.1)
 
 ## Features
