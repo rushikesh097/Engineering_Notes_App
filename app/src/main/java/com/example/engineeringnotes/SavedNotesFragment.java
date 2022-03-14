@@ -102,7 +102,8 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
                     }
 
                     case R.id.share:{
-                        shareUrlLink(chapter);
+                        String link = viewModel.getLinkFromChapter2(chapter).get(0);
+                        shareUrlLink(link);
                         break;
                     }
                 }
@@ -133,10 +134,10 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
     {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, link);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Engineering Notes App\n"+link);
         sendIntent.setType("text/plain");
 
-        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        Intent shareIntent = Intent.createChooser(sendIntent, "Share Notes");
         startActivity(shareIntent);
     }
 }

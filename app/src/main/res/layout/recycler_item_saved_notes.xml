@@ -22,7 +22,7 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="348dp"
+                android:layout_width="330dp"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/baloo_bhai"
                 android:gravity="center"
@@ -34,8 +34,8 @@
 
             <ImageView
                 android:id="@+id/more2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center|end"
                 android:paddingEnd="0dp"
                 app:srcCompat="@drawable/ic_baseline_more_vert_24" />
