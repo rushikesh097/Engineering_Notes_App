@@ -44,17 +44,16 @@ List the ready features here:
 
 ## Setup
 - Add this in build.gradel
-`def lifecycle_version = "2.5.0-alpha02"`
-    //lifecycle components
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
-    // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
-    //room db components
-    def room_version = "2.4.1"
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"`
+- Livedata Components
+`def lifecycle_version = "2.5.0-alpha02"`
+`implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"`
+`implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"`
+`annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"`
+- Room database Components
+`def room_version = "2.4.1"`
+`implementation "androidx.room:room-runtime:$room_version"`
+`annotationProcessor "androidx.room:room-compiler:$room_version"`
 
 ## Usage
 How does one go about using it?
