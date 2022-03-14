@@ -26,8 +26,8 @@
 
 
 ## Technologies Used
--Java (JDK-12)
--Android Studio (2021.1.1)
+- Java (JDK-12)
+- Android Studio (2021.1.1)
 
 ## Features
 List the ready features here:
@@ -80,7 +80,7 @@ Give credit here.
 Created by 
 - [@rushikesh](https://github.com/rushikesh097/)
 - [@ashish](https://github.com/ashish-birajdar007) 
-- feel free to contact us!
+feel free to contact us!
 
 
 <!-- Optional -->
