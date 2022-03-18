@@ -13,17 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.engineeringnotes.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.ChapterViewHolder> {
 
     private List<String> chaptersList;
     private Context context;
+    private String subject;
     private OnChapterClickListener chapterClickListener;
 
-    public ChaptersRVAdapter(List<String> chaptersList, Context context, OnChapterClickListener chapterClickListener) {
+    public ChaptersRVAdapter(List<String> chaptersList, Context context, String subject, OnChapterClickListener chapterClickListener) {
         this.chaptersList = chaptersList;
         this.context = context;
+        this.subject = subject;
         this.chapterClickListener = chapterClickListener;
     }
 
@@ -39,7 +43,13 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
     public void onBindViewHolder(@NonNull ChaptersRVAdapter.ChapterViewHolder holder, int position) {
         String chapter = chaptersList.get(position);
         holder.chapterName.setText(chapter);
-
+        if(chapter.equals("Question Papers") || chapter.contains("Syllabus")){
+            holder.chapterNo.setText("");
+        }
+        else{
+            holder.chapterNo.setText(holder.chapterNo.getText().toString().concat(String.valueOf(position+1)));
+        }
+        holder.subject.setText(subject);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +72,8 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
 
     public class ChapterViewHolder extends RecyclerView.ViewHolder{
         TextView chapterName;
+        TextView chapterNo;
+        TextView subject;
         CardView cardView;
         ImageView more1;
         public ChapterViewHolder(@NonNull View itemView) {
@@ -69,6 +81,8 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
             chapterName = itemView.findViewById(R.id.name);
             cardView = itemView.findViewById(R.id.cardview);
             more1 = itemView.findViewById(R.id.more1);
+            chapterNo = itemView.findViewById(R.id.chapter_no);
+            subject = itemView.findViewById(R.id.subject_name);
         }
     }
 

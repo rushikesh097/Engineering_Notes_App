@@ -1,5 +1,6 @@
 package com.example.engineeringnotes;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +21,8 @@ import com.example.engineeringnotes.adapters.ChaptersRVAdapter;
 import com.example.engineeringnotes.databases.savednotes.SavedNotes;
 import com.example.engineeringnotes.databases.SubjectNotesViewModel;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,7 +48,7 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
 
         chapterNames = subjectNotesViewModel.getChaptersFromSubject(subject);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new ChaptersRVAdapter(chapterNames,this,this));
+        recyclerView.setAdapter(new ChaptersRVAdapter(chapterNames,this,subject,this));
         recyclerView.setHasFixedSize(true);
     }
 
@@ -61,6 +65,7 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
         popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
         popup.getMenu().getItem(0).setVisible(false);
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()){
@@ -70,7 +75,10 @@ public class ChaptersActivity extends AppCompatActivity implements ChaptersRVAda
                     }
                     case R.id.save:{
                         Toast.makeText(ChaptersActivity.this, "Saved Successfully", Toast.LENGTH_SHORT).show();
-                        SavedNotes savedNotes = chapter.equals("Question Papers")? new SavedNotes(chapter+" : "+subject,link): new SavedNotes(chapter,link);
+                        LocalDateTime localDateTime = LocalDateTime.now();
+                        DateTimeFormatter ftf = DateTimeFormatter.ofPattern("HH:mm");
+                        String date = localDateTime.getDayOfMonth()+" "+localDateTime.getMonth().toString().substring(0,3)+" "+ftf.format(localDateTime);
+                        SavedNotes savedNotes = chapter.equals("Question Papers")? new SavedNotes(chapter+" : "+subject,link,date): new SavedNotes(chapter,link,date);
                         subjectNotesViewModel.insert(savedNotes);
                         break;
                     }

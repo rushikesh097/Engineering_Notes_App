@@ -11,10 +11,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.engineeringnotes.adapters.VPFragmentAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -63,6 +66,7 @@ public class HomeFragment extends Fragment {
 
         new TabLayoutMediator(tabLayout,viewPager2,(((tab, position) -> tab.setText(tabNames[position]))))
                 .attach();
+
 
     }
 }

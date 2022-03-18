@@ -15,9 +15,12 @@ public class SavedNotes {
 
     private String link;
 
-    public SavedNotes(@NotNull String chapterName, @NotNull String link) {
+    private String date;
+
+    public SavedNotes(@NotNull String chapterName, @NotNull String link, String date) {
         this.chapterName = chapterName;
         this.link = link;
+        this.date = date;
     }
 
     public void setId(int id) {
@@ -44,4 +47,11 @@ public class SavedNotes {
         this.link = link;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

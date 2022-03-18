@@ -11,7 +11,7 @@
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/activity_chapters.xml" value="0.1816123188405797" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/drawer_item_selected.xml" value="0.221875" />
-        <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/fragment_saved_notes.xml" value="0.1816123188405797" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/fragment_sem_one.xml" value="0.10746720484359233" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/fragment_sem_two.xml" value="0.10746720484359233" />
@@ -21,6 +21,8 @@
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/recycler_item.xml" value="0.1816123188405797" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/recycler_item_chapters.xml" value="0.1816123188405797" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/recycler_item_saved_notes.xml" value="0.1816123188405797" />
+        <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/layout/recycler_item_subjects.xml" value="0.264" />
+        <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/menu/bottom_nav_menu.xml" value="0.221875" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/menu/main_menu.xml" value="0.221875" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/menu/nav_drawer_menu.xml" value="0.221875" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/Engineering_Notes_App/app/src/main/res/layout/activity_main.xml" value="0.176" />
