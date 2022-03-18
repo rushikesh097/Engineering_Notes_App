@@ -54,7 +54,7 @@ annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
  ```
 
 - Room database Components
-```
+```gradel
 def room_version = "2.4.1"
 implementation "androidx.room:room-runtime:$room_version"
 annotationProcessor "androidx.room:room-compiler:$room_version"`
