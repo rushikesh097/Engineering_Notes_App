@@ -49,7 +49,7 @@ List the ready features here:
 ```def lifecycle_version = "2.5.0-alpha02"
   implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
   implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
-  annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"```
+  annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"`
 
 - Room database Components
 ```def room_version = "2.4.1"
