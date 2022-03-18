@@ -46,7 +46,7 @@ List the ready features here:
 - Add this in build.gradel
 
 - Livedata Components
-```
+```python
 def lifecycle_version = "2.5.0-alpha02"
 implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
 implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
@@ -57,7 +57,7 @@ annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 ```python
 def room_version = "2.4.1"
 implementation "androidx.room:room-runtime:$room_version"
-annotationProcessor "androidx.room:room-compiler:$room_version"`
+annotationProcessor "androidx.room:room-compiler:$room_version"
 ```
 
 ## Usage
@@ -91,8 +91,7 @@ Give credit here.
 
 ## Contact
 Created by 
-- [@rushikesh](https://github.com/rushikesh097/)
-- [@ashish](https://github.com/ashish-birajdar007) 
+- [@rushikesh](https://github.com/rushikesh097/), [@ashish](https://github.com/ashish-birajdar007) contact us for more info.
 
 
 <!-- Optional -->
