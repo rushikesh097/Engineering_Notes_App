@@ -14,8 +14,11 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.engineeringnotes.R;
+import com.example.engineeringnotes.databases.savednotes.SavedNotes;
 
-public class SavedNotesRVAdapter extends ListAdapter<String,SavedNotesRVAdapter.SavedNotesHolder> {
+import org.w3c.dom.Text;
+
+public class SavedNotesRVAdapter extends ListAdapter<SavedNotes,SavedNotesRVAdapter.SavedNotesHolder> {
 
     private Context context;
     private OnItemClickListener onItemClickListener;
@@ -26,15 +29,17 @@ public class SavedNotesRVAdapter extends ListAdapter<String,SavedNotesRVAdapter.
         this.onItemClickListener = onItemClickListener;
     }
 
-    private static final DiffUtil.ItemCallback<String> DIFF_CALLBACK = new DiffUtil.ItemCallback<String>() {
+    private static DiffUtil.ItemCallback<SavedNotes> DIFF_CALLBACK = new DiffUtil.ItemCallback<SavedNotes>() {
         @Override
-        public boolean areItemsTheSame(@NonNull String s, @NonNull String t1) {
-            return s.equals(t1);
+        public boolean areItemsTheSame(@NonNull SavedNotes oldItem, @NonNull SavedNotes newItem) {
+            return oldItem.getId() == newItem.getId();
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull String s, @NonNull String t1) {
-            return s.equals(t1);
+        public boolean areContentsTheSame(@NonNull SavedNotes oldItem, @NonNull SavedNotes newItem) {
+            return oldItem.getChapterName().equals(newItem.getChapterName()) &&
+                    oldItem.getLink().equals(newItem.getLink()) &&
+                    oldItem.getDate().equals(newItem.getDate());
         }
     };
 
@@ -47,24 +52,25 @@ public class SavedNotesRVAdapter extends ListAdapter<String,SavedNotesRVAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull SavedNotesHolder holder, int i) {
-        String chapter = getChapterNameAt(i);
-        holder.chapterName.setText(chapter);
+        SavedNotes note = getNoteAt(i);
+        holder.chapterName.setText(note.getChapterName());
+        holder.date.setText(note.getDate());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickListener.onItemClick(chapter);
+                onItemClickListener.onItemClick(note.getLink());
             }
         });
 
         holder.more2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickListener.onItemIconClick(chapter,holder.more2);
+                onItemClickListener.onItemIconClick(note,holder.more2);
             }
         });
     }
 
-    public String getChapterNameAt(int position){
+    public SavedNotes getNoteAt(int position){
         return getItem(position);
     }
 
@@ -72,16 +78,19 @@ public class SavedNotesRVAdapter extends ListAdapter<String,SavedNotesRVAdapter.
         TextView chapterName;
         CardView cardView;
         ImageView more2;
+        TextView date;
+
         public SavedNotesHolder(@NonNull View itemView) {
             super(itemView);
             chapterName = itemView.findViewById(R.id.name);
             cardView = itemView.findViewById(R.id.cardview);
             more2 = itemView.findViewById(R.id.more2);
+            date = itemView.findViewById(R.id.date);
         }
     }
 
     public interface OnItemClickListener{
-        void onItemClick(String chapter);
-        void onItemIconClick(String chapter,ImageView view);
+        void onItemClick(String link);
+        void onItemIconClick(SavedNotes note,ImageView view);
     }
 }

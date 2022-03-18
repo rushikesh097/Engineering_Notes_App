@@ -49,22 +49,16 @@ public class SubjectNotesRepository {
         savedNotesDao.insert(savedNotes);
     }
 
-    public void delete(String chapter){
-        ExecutorService service = Executors.newSingleThreadExecutor();
-        service.execute(new Runnable() {
-            @Override
-            public void run() {
-                savedNotesDao.delete(chapter);
-            }
-        });
+    public void delete(SavedNotes note){
+        savedNotesDao.delete(note);
     }
 
-    protected LiveData<List<String>> getAllChapters(){
-        return savedNotesDao.getAllChapters();
+    protected List<String> isChapterPresent(String chapter_name){
+        return savedNotesDao.isChapterPresent(chapter_name);
     }
 
-    protected List<String> getLinkFromChapter2(String chapter){
-        return savedNotesDao.getLinkFromChapter2(chapter);
+    protected LiveData<List<SavedNotes>> getAllSavedNotes() {
+        return savedNotesDao.getAllSavedNotes();
     }
 
 }

@@ -7,10 +7,11 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:layout_margin="10dp"
         app:cardBackgroundColor="@color/purple_200"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="15dp"
+        android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,12 +21,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/baloo_bhai"
-            android:gravity="center"
-            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
             android:text="subject 1"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold">
-        </TextView>
+            android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

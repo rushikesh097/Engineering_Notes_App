@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.engineeringnotes.adapters.SavedNotesRVAdapter;
 import com.example.engineeringnotes.databases.SubjectNotesViewModel;
+import com.example.engineeringnotes.databases.savednotes.SavedNotes;
 
 public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.OnItemClickListener {
 
@@ -52,8 +53,8 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
         adapter = new SavedNotesRVAdapter(context,this);
         recyclerView.setAdapter(adapter);
         viewModel = new ViewModelProvider(this).get(SubjectNotesViewModel.class);
-        viewModel.getAllChapters().observe(getViewLifecycleOwner(), chapterNames-> {
-            adapter.submitList(chapterNames);
+        viewModel.getAllSavedNotes().observe(getViewLifecycleOwner(), savedNotes-> {
+            adapter.submitList(savedNotes);
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setHasFixedSize(true);
@@ -69,20 +70,20 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
 
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                    String chapter = adapter.getChapterNameAt(viewHolder.getAbsoluteAdapterPosition());
-                    deleteSavedNote(chapter);
+                    SavedNotes note= adapter.getNoteAt(viewHolder.getAbsoluteAdapterPosition());
+                    deleteSavedNote(note);
                 }
             });
     }
 
     @Override
-    public void onItemClick(String chapter) {
-        String link = viewModel.getLinkFromChapter2(chapter).get(0);
+    public void onItemClick(String link) {
         openWebPage(link);
     }
 
+
     @Override
-    public void onItemIconClick(String chapter, ImageView view) {
+    public void onItemIconClick(SavedNotes note, ImageView view) {
         PopupMenu popup = new PopupMenu(context,view);
         popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
         popup.getMenu().getItem(1).setVisible(false);
@@ -92,18 +93,17 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
 
                 switch (menuItem.getItemId()){
                     case R.id.open:{
-                        onItemClick(chapter);
+                        onItemClick(note.getLink());
                         break;
                     }
 
                     case R.id.more2:{
-                        deleteSavedNote(chapter);
+                        deleteSavedNote(note);
                         break;
                     }
 
                     case R.id.share:{
-                        String link = viewModel.getLinkFromChapter2(chapter).get(0);
-                        shareUrlLink(link);
+                        shareUrlLink(note.getLink());
                         break;
                     }
                 }
@@ -124,9 +124,9 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
         }
     }
 
-    private void deleteSavedNote(String chapter)
+    private void deleteSavedNote(SavedNotes note)
     {
-        viewModel.delete(chapter);
+        viewModel.delete(note);
         Toast.makeText(context, "Deleted Successfully !", Toast.LENGTH_SHORT).show();
     }
 

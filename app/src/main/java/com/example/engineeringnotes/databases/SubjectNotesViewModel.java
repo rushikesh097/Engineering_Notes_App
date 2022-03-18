@@ -36,18 +36,16 @@ public class SubjectNotesViewModel extends AndroidViewModel {
     }
 
     public void insert(SavedNotes savedNotes){
-        repository.insert(savedNotes);
+        if(repository.isChapterPresent(savedNotes.getChapterName()).size()==0){
+            repository.insert(savedNotes);
+        }
     }
 
-    public void delete(String chapter){
-        repository.delete(chapter);
+    public void delete(SavedNotes note){
+        repository.delete(note);
     }
 
-    public LiveData<List<String>> getAllChapters(){
-        return repository.getAllChapters();
-    }
-
-    public List<String> getLinkFromChapter2(String chapter){
-        return repository.getLinkFromChapter2(chapter);
+    public LiveData<List<SavedNotes>> getAllSavedNotes() {
+        return repository.getAllSavedNotes();
     }
 }

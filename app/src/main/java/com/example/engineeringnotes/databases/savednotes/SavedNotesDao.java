@@ -2,6 +2,7 @@ package com.example.engineeringnotes.databases.savednotes;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -12,12 +13,12 @@ public interface SavedNotesDao {
     @Insert
     void insert(SavedNotes savedNotes);
 
-    @Query("DELETE FROM saved_notes_table WHERE chapterName = :chapter")
-    void delete(String chapter);
+    @Delete
+    void delete(SavedNotes savedNotes);
 
-    @Query("SELECT DISTINCT chapterName FROM saved_notes_table")
-    LiveData<List<String>> getAllChapters();
+    @Query("SELECT chapterName FROM saved_notes_table WHERE chapterName = :chapter_name")
+    List<String> isChapterPresent(String chapter_name);
 
-    @Query("SELECT DISTINCT link FROM saved_notes_table WHERE chapterName = :chapter")
-    List<String> getLinkFromChapter2(String chapter);
+    @Query("SELECT * FROM saved_notes_table")
+    LiveData<List<SavedNotes>> getAllSavedNotes();
 }
