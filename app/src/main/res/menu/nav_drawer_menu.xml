@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<group android:checkableBehavior="single">
-    <item android:title="@string/select_year"
-        android:checkable="false"
-        android:id="@+id/main_title"/>
-</group>
 
     <group android:checkableBehavior="single">
         <item
             android:title="@string/first_year"
-            android:id="@+id/nav_FE" />
+            android:id="@+id/nav_FE"
+            android:icon="@drawable/ic_baseline_looks_one_24"/>
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:title="@string/second_year"
-            android:id="@+id/nav_SE" />
+            android:id="@+id/nav_SE"
+            android:icon="@drawable/ic_baseline_looks_two_24"/>
     </group>
     <group android:checkableBehavior="single">
         <item
             android:title="@string/third_year"
-            android:id="@+id/nav_TE" />
+            android:id="@+id/nav_TE"
+            android:icon="@drawable/ic_baseline_looks_3_24"/>
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:title="@string/final_year"
-            android:id="@+id/nav_BE" />
+            android:id="@+id/nav_BE"
+            android:icon="@drawable/ic_baseline_looks_4_24"/>
     </group>
 
     <group android:checkableBehavior="none">
@@ -38,16 +37,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/saved_notes"
-            android:title="@string/saved_notes"/>
+            android:title="@string/saved_notes"
+            android:icon="@drawable/ic_round_archive_24"/>
     </group>
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_settings"
-            android:title="@string/settings" />
+            android:title="@string/settings"
+            android:icon="@drawable/ic_round_settings_24"/>
     </group>
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_submit"
-            android:title="@string/submit_notes" />
+            android:title="@string/submit_notes"
+            android:icon="@drawable/ic_round_arrow_upward_24"/>
     </group>
 </menu>
