@@ -40,8 +40,9 @@
 
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,30 +50,54 @@
 
             <RadioButton
                 android:id="@+id/fe_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:padding="15dp"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/radio_text_selector"
+                android:background="@drawable/radio_background_selector"
+                android:button="@android:color/transparent"
+                android:layout_margin="8dp"
                 android:text="@string/first_year" />
 
             <RadioButton
                 android:id="@+id/se_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
                 android:padding="20dp"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/radio_text_selector"
+                android:background="@drawable/radio_background_selector"
+                android:button="@android:color/transparent"
+                android:layout_margin="8dp"
                 android:text="@string/second_year" />
 
             <RadioButton
                 android:id="@+id/te_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
                 android:padding="20dp"
+                android:textSize="20sp"
+                android:textColor="@color/radio_text_selector"
+                android:gravity="center"
+                android:background="@drawable/radio_background_selector"
+                android:button="@android:color/transparent"
+                android:layout_margin="8dp"
                 android:text="@string/third_year" />
 
             <RadioButton
                 android:id="@+id/be_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
                 android:padding="20dp"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/radio_text_selector"
+                android:background="@drawable/radio_background_selector"
+                android:button="@android:color/transparent"
+                android:layout_margin="8dp"
                 android:text="@string/final_year" />
 
         </RadioGroup>
