@@ -20,8 +20,7 @@
 ## General Information
 - Provide general information about your project here.
 - We created a platform for notes of any Engineering subject at one click.
-- What is the purpose of your project?
-- Why did you undertake it?
+- This is a very Helpfull application for students
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
@@ -32,9 +31,8 @@
 
 ## Features
 List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- Compact Size
+- Simple UI
 
 
 ## Screenshots
@@ -78,8 +76,8 @@ Room for improvement:
 - Improvement to be done 2
 
 To do:
-- Feature to be added 1
-- Feature to be added 2
+- Cloud Feature
+- PDF viewer
 
 
 ## Acknowledgements
