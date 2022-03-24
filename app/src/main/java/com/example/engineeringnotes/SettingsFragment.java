@@ -10,14 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -26,11 +24,14 @@ public class SettingsFragment extends Fragment {
     private Context context;
     private String actionBarName;
     private SwitchCompat changeTheme;
-    LinearLayout linearLayout;
+    private LinearLayout linearLayout;
+    private TextView yearName;
 
-    public SettingsFragment(Context context, String actionBarName) {
+
+    public SettingsFragment(Context context, String actionBarName, TextView yearName) {
         this.context = context;
         this.actionBarName = actionBarName;
+        this.yearName = yearName;
     }
 
     @Override
@@ -42,26 +43,18 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        requireActivity().setTitle(actionBarName);
+        yearName.setText(actionBarName);
         init(view);
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openWebPage("https://github.com/rushikesh097/Engineering_Notes_App.git");
-            }
-        });
+        linearLayout.setOnClickListener(view1 -> openWebPage());
 
 //        changeTheme.setChecked(true);
-        changeTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    Toast.makeText(context, "Dark !", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(context, "Light !", Toast.LENGTH_SHORT).show();
-                }
+        changeTheme.setOnCheckedChangeListener((compoundButton, b) -> {
+            if(b){
+                Toast.makeText(context, "Dark !", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(context, "Light !", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -72,8 +65,8 @@ public class SettingsFragment extends Fragment {
     }
 
     @SuppressLint("QueryPermissionsNeeded")
-    private void openWebPage(String url) {
-        Uri webpage = Uri.parse(url);
+    private void openWebPage() {
+        Uri webpage = Uri.parse("https://github.com/rushikesh097/Engineering_Notes_App.git");
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
         try{
             startActivity(intent);
