@@ -49,7 +49,6 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
         else{
             holder.chapterNo.setText(holder.chapterNo.getText().toString().concat(String.valueOf(position+1)));
         }
-        holder.subject.setText(subject);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +72,6 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
     public class ChapterViewHolder extends RecyclerView.ViewHolder{
         TextView chapterName;
         TextView chapterNo;
-        TextView subject;
         CardView cardView;
         ImageView more1;
         public ChapterViewHolder(@NonNull View itemView) {
@@ -82,7 +80,6 @@ public class ChaptersRVAdapter extends RecyclerView.Adapter<ChaptersRVAdapter.Ch
             cardView = itemView.findViewById(R.id.cardview);
             more1 = itemView.findViewById(R.id.more1);
             chapterNo = itemView.findViewById(R.id.chapter_no);
-            subject = itemView.findViewById(R.id.subject_name);
         }
     }
 

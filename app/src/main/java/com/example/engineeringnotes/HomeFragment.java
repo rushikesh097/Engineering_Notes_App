@@ -11,13 +11,12 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.engineeringnotes.adapters.VPFragmentAdapter;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -32,14 +31,18 @@ public class HomeFragment extends Fragment {
     private FragmentActivity fragmentActivity;
     private final String[] tabNames = new String[]{"SEM I","SEM II"};
     private String actionBarName;
+    private TextView yearName;
+    private LinearLayout layout;
 
     public HomeFragment() {
     }
 
-    public HomeFragment(Context context, FragmentActivity fragmentActivity, String actionBarName){
+    public HomeFragment(Context context, FragmentActivity fragmentActivity, String actionBarName, TextView yearName, LinearLayout layout){
         this.context = context;
         this.fragmentActivity = fragmentActivity;
         this.actionBarName = actionBarName;
+        this.yearName = yearName;
+        this.layout = layout;
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,7 +54,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        requireActivity().setTitle(actionBarName);
+        layout.setVisibility(View.VISIBLE);
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -59,6 +62,7 @@ public class HomeFragment extends Fragment {
         editor.putString("year",actionBarName);
         editor.apply();
 
+        yearName.setText(actionBarName);
         viewPager2 = view.findViewById(R.id.viewPager2);
         tabLayout = view.findViewById(R.id.tabLayout);
         vpFragmentAdapter = new VPFragmentAdapter(fragmentActivity,context,actionBarName);

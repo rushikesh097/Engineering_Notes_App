@@ -4,16 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/radio_inactive"
     tools:context=".ChaptersActivity">
+
+    <TextView
+        android:id="@+id/action1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/radio_inactive"
+        android:gravity="center"
+        android:text="@string/hello_blank_fragment"
+        android:textAllCaps="false"
+        android:textColor="@color/radio_active"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/chapters_recyclerview"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chapters_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/radio_inactive"
+        app:layout_constraintBottom_toTopOf="@id/app_name1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/action1"
+        android:layout_marginBottom="25dp"
+        tools:listitem="@layout/recycler_item_subjects" />
+
+    <TextView
+        android:id="@+id/app_name1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/app_name"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@color/radio_inactive"
+        android:background="@drawable/bottom_dialog_shape"
+        android:backgroundTint="@color/radio_active"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/recycler_item_subjects"/>
+        app:layout_constraintTop_toBottomOf="@id/chapters_recyclerview" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

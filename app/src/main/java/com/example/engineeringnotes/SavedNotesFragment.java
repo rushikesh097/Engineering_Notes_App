@@ -15,11 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.engineeringnotes.adapters.SavedNotesRVAdapter;
@@ -33,10 +34,12 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
     private RecyclerView recyclerView;
     private SubjectNotesViewModel viewModel;
     private SavedNotesRVAdapter adapter;
+    private TextView yearName;
 
-    public SavedNotesFragment(Context context, String actionBarName) {
+    public SavedNotesFragment(Context context, String actionBarName, TextView yearName) {
         this.context = context;
         this.actionBarName = actionBarName;
+        this.yearName = yearName;
     }
 
     @Override
@@ -48,14 +51,14 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        requireActivity().setTitle(actionBarName);
+
+        yearName.setText(actionBarName);
+
         recyclerView = view.findViewById(R.id.saved_notes_rv);
         adapter = new SavedNotesRVAdapter(context,this);
         recyclerView.setAdapter(adapter);
         viewModel = new ViewModelProvider(this).get(SubjectNotesViewModel.class);
-        viewModel.getAllSavedNotes().observe(getViewLifecycleOwner(), savedNotes-> {
-            adapter.submitList(savedNotes);
-        });
+        viewModel.getAllSavedNotes().observe(getViewLifecycleOwner(), savedNotes-> adapter.submitList(savedNotes));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setHasFixedSize(true);
         onSlideItem().attachToRecyclerView(recyclerView);
@@ -83,34 +86,30 @@ public class SavedNotesFragment extends Fragment implements SavedNotesRVAdapter.
 
 
     @Override
-    public void onItemIconClick(SavedNotes note, ImageView view) {
-        PopupMenu popup = new PopupMenu(context,view);
-        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
-        popup.getMenu().getItem(1).setVisible(false);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
+    public void onItemIconClick(SavedNotes note, ImageView anchor) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.saved_notes_menu, null);
+        LinearLayout delete = view.findViewById(R.id.delete_note);
+        LinearLayout open = view.findViewById(R.id.open_note);
+        LinearLayout share = view.findViewById(R.id.share_note);
+        PopupWindow popup = new PopupWindow(view, 400, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        popup.showAsDropDown(anchor, -350, 0);
 
-                switch (menuItem.getItemId()){
-                    case R.id.open:{
-                        onItemClick(note.getLink());
-                        break;
-                    }
-
-                    case R.id.more2:{
-                        deleteSavedNote(note);
-                        break;
-                    }
-
-                    case R.id.share:{
-                        shareUrlLink(note.getLink());
-                        break;
-                    }
-                }
-                return true;
-            }
+        delete.setOnClickListener(view1 -> {
+            deleteSavedNote(note);
+            Toast.makeText(context, "Deleted Successfully !", Toast.LENGTH_SHORT).show();
+            popup.dismiss();
         });
-        popup.show();
+
+        open.setOnClickListener(view12 -> {
+            onItemClick(note.getLink());
+            popup.dismiss();
+        });
+
+        share.setOnClickListener(view13 -> {
+            shareUrlLink(note.getLink());
+            popup.dismiss();
+        });
     }
 
     @SuppressLint("QueryPermissionsNeeded")

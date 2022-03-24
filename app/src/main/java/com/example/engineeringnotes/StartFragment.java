@@ -11,18 +11,23 @@ import androidx.fragment.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
-
+import android.widget.TextView;
 
 
 public class StartFragment extends Fragment {
 
     private Context context;
     private FragmentActivity fragmentActivity;
+    private TextView yearName;
+    private LinearLayout layout;
 
-    public StartFragment(Context context, FragmentActivity fragmentActivity) {
+    public StartFragment(Context context, FragmentActivity fragmentActivity, TextView yearName, LinearLayout layout) {
         this.context = context;
         this.fragmentActivity = fragmentActivity;
+        this.yearName = yearName;
+        this.layout = layout;
     }
 
     RadioButton btn1,btn2,btn3,btn4;
@@ -36,6 +41,8 @@ public class StartFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        layout.setVisibility(View.INVISIBLE);
 
         init(view);
 
@@ -58,7 +65,10 @@ public class StartFragment extends Fragment {
     private void openHomeFragment(String actionBarName){
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout,new HomeFragment(context,fragmentActivity, actionBarName))
+                .replace(R.id.frame_layout,new HomeFragment(context,fragmentActivity, actionBarName, yearName, layout))
                 .commit();
     }
 }
+
+
+

@@ -29,7 +29,7 @@
             android:paddingStart="50dp"
             android:paddingEnd="50dp"
             android:text="@string/select_year"
-            android:textColor="@color/black"
+            android:textColor="@color/radio_inactive"
             android:textSize="25sp"
             android:layout_marginTop="150dp"
             app:layout_constraintBottom_toTopOf="@+id/radioGroup"
