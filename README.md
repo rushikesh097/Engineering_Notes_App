@@ -18,8 +18,8 @@
 
 
 ## General Information
-- Provide general information about your project here.
-- We created a platform for notes of any Engineering subject at one click.
+- Java Based Android Application
+- We created a platform for students who wants to access notes of various Engineering Subject
 - This is a very Helpfull application for students
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
