@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/drawable-v24/ic_baseline_note_icon.xml" value="0.13" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/drawable-v24/ic_settings.xml" value="0.1455" />
         <entry key="..\:/Android_Projects/EngineeringNotes/app/src/main/res/drawable-v24/splash_screen_back.xml" value="0.13" />
