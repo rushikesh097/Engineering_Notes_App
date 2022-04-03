@@ -19,13 +19,13 @@
 
 ## General Information
 - Java Based Android Application
-- We created a platform for students who wants to access notes of various Engineering Subject
+- We created a platform for students who wants to access notes of various Engineering Subjects
 - This is a very Helpfull application for students
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
 ## Technologies Used
-- Java (JDK-12)
+- Java (JDK-11)
 - Room database (2.4.1)
 - Android Studio (2021.1.1)
 
@@ -56,6 +56,11 @@ annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 def room_version = "2.4.1"
 implementation "androidx.room:room-runtime:$room_version"
 annotationProcessor "androidx.room:room-compiler:$room_version"
+```
+
+-Splash Screen Api
+```python
+implementation 'androidx.core:core-splashscreen:1.0.0-beta01'
 ```
 
 ## Usage
