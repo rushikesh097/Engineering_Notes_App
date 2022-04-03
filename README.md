@@ -58,7 +58,7 @@ implementation "androidx.room:room-runtime:$room_version"
 annotationProcessor "androidx.room:room-compiler:$room_version"
 ```
 
--Splash Screen Api
+- Splash Screen Api
 ```python
 implementation 'androidx.core:core-splashscreen:1.0.0-beta01'
 ```
